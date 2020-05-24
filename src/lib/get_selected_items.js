@@ -42,6 +42,8 @@ async function getSelectedItems(){
     }
     return items;
   }
+
+  return [];
 }
 
 module.exports = getSelectedItems;

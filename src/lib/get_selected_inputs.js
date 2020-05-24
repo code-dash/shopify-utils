@@ -1,7 +1,7 @@
 function getSelectedInpus(){
   const currentPage = this.getCurrentPageType();
   let ids = [];
-  if(currentPage === 'product' || currentPage === 'collection' || currentPage === 'page' || currentPage === 'order' || currentPage === 'blog' || currentPage === 'article'){
+  if(currentPage === 'product' || currentPage === 'collection' || currentPage === 'page' || currentPage === 'order' || currentPage === 'blog' || currentPage === 'article' || currentPage === 'navigation'){
     const id = window.location.pathname.split('/').pop();
     ids.push(id);
   } else if(currentPage === 'products'){

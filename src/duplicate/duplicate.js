@@ -18,8 +18,14 @@ async function duplicate(){
       await this.duplicate_blog(element)
     } else if(currentPage === 'article' || currentPage === 'articles'){
       await this.duplicate_article(element)
-    }
+    } 
   }
+  
+  if(currentPage === 'navigation') {
+    await this.duplicate_navigation()
+  }
+
+  alert('Done!')
 }
 
 module.exports = duplicate;

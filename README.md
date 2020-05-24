@@ -11,6 +11,7 @@ Work in progress
 - webpack setup
 - Duplicate for articles
 - Duplicate for blogs
+- Duplicate for navigations
 
 ### Updated
 

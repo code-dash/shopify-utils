@@ -23,6 +23,8 @@ function getCurrentPageType() {
     return 'blogs';
   } else if(window.location.pathname.match(/\/admin\/blogs\/\d+$/)){
     return 'blog';
+  } else if(window.location.pathname.match(/\/admin\/menus\/\d+$/)){
+    return 'navigation';
   }
 }
 
