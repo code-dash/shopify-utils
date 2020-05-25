@@ -1,6 +1,7 @@
+import './styles/main.scss';
+
 import getCurrentPageType from './lib/get_current_page_type';
 import toggleSidebar from './lib/toggle_sidebar';
-import styleTag from './lib/style_tag';
 import getCSRFToken from './lib/get_csrf_token';
 import clickEvent from './lib/click_event';
 import htmlSidebar from './lib/html_sidebar';
@@ -49,7 +50,6 @@ class ShopifyUtils {
 Object.assign(ShopifyUtils.prototype, {
   getCurrentPageType,
   toggleSidebar,
-  styleTag,
   getCSRFToken,
   clickEvent,
   htmlSidebar,

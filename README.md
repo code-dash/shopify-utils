@@ -8,6 +8,8 @@ Shopify constantly updates their admin logic, so there is a high chance at some 
 
 There might be some bugs so please use at your own discretion!
 
+**Notice: Its imporatant to be in the "top" content for the console, since there will be issues if you enter the iframe context on the `pages` type and try to locate the checked checkboxes.**
+
 ## How to use
 
 1) Copy the code from `dist/bundle.js`.
