@@ -4,7 +4,9 @@
 
 This is a script that can be pasted in your browser console in order to take advantage of the Shopify Admin access and build additional functionalities on top of it.
 
-There might be some bugs so please use at your own discretion.
+Shopify constantly updates their admin logic, so there is a high chance at some point some of the routes stop working.
+
+There might be some bugs so please use at your own discretion!
 
 ## How to use
 

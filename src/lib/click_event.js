@@ -1,6 +1,6 @@
 function clickEvent(){
   const self = this;
-  document.querySelector('.js-shopify_utils-action').addEventListener('click', function(e) {
+  this.sidebar.querySelector('.js-shopify_utils-action').addEventListener('click', function(e) {
     e.preventDefault();
     const type = this.getAttribute('data-type');
     const currentPage = self.getCurrentPageType();
@@ -10,6 +10,12 @@ function clickEvent(){
       return;
     } 
     self[type]();
+  })
+
+  this.sidebar.querySelector(`.${this.prefix}-sidepanel__close`).addEventListener('click', (e) => {
+    this.sidebar.querySelectorAll(`.${this.prefix}-sidepanel`).forEach(item => {
+      item.classList.remove(this.activeClass)
+    })
   })
 }
 

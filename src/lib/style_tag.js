@@ -82,6 +82,91 @@ function styleTag(){
       width: 200px;
       padding: 20px;
     }
+
+    .${this.prefix}-sidepanel {
+      position: absolute;
+      top: 0;
+      right: 200px;
+      min-width: 300px;
+      padding: 20px;
+      height: auto;
+      z-index: 2;
+      background-color: #fff;
+      transition: transform 0.3s;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      transform: translateY(-100%);
+      box-shadow: -5px 2px 5px rgba(0,0,0,.1);
+    }
+
+    .${this.prefix}-sidepanel.is-active {
+      transform: translateY(0);
+    }
+
+    .${this.prefix}-sidepanel form {
+      flex: 100%;
+    }
+
+    .${this.prefix}-sidepanel li {
+      margin: 0 0 5px;
+    }
+
+    .${this.prefix}-sidepanel li label {
+      display: flex;
+      align-items: center;
+    }
+
+    .${this.prefix}-sidepanel li input {
+      margin: 0 10px 0 0;
+    }
+
+    .${this.prefix}-sidepanel__close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+    }
+
+    .${this.prefix}-sidepanel__close:before,
+    .${this.prefix}-sidepanel__close:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      display: block;
+      width: 1px;
+      height: 20px;
+      background:#000;
+      cursor: pointer;
+    }
+
+    .${this.prefix}-sidepanel__close:before {
+      transform: rotate(45deg);
+    }
+
+    .${this.prefix}-sidepanel__close:after {
+      transform: rotate(-45deg);
+    }
+
+    .${this.prefix}-sidepanel .btn {
+      width: 100%;
+      padding: 5px 0;
+      background: linear-gradient(180deg,#3f4eae,#3f4eae);
+      border-color: #38469b;
+      box-shadow: inset 0 0 0 0 transparent, 0 1px 0 0 rgba(22,29,37,.05), 0 0 1px 0 #38469b;
+      font-size: 14px;
+      color: #fff;
+      line-height: 1.6rem;
+      text-transform: none;
+      letter-spacing: normal;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .${this.prefix}-sidepanel .btn:hover {
+      background: linear-gradient(180deg,#5c6ac4,#4959bd);
+      text-decoration: none;
+    }
   </style>
   `;
 }

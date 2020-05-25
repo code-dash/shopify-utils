@@ -20,6 +20,9 @@ import duplicate_order from './duplicate/order';
 import duplicate_blog from './duplicate/blog';
 import duplicate_article from './duplicate/article';
 import duplicate_navigation from './duplicate/navigation';
+import { appendHTML, duplicateHTML } from './duplicate/html';
+import duplicateSubmit from './duplicate/submit';
+import { extractMetafields } from './duplicate/metafields';
 
 class ShopifyUtils {
   constructor() {
@@ -37,6 +40,8 @@ class ShopifyUtils {
     this.generateSidebar();
     this.toggleSidebar();
     this.clickEvent();
+
+    this.duplicateSubmit();
   }
 }
 
@@ -69,7 +74,11 @@ Object.assign(ShopifyUtils.prototype, {
   duplicate_order,
   duplicate_blog,
   duplicate_article,
-  duplicate_navigation
+  duplicate_navigation,
+  appendHTML,
+  duplicateHTML,
+  duplicateSubmit,
+  extractMetafields
 })
 
 const shopifyUtils = new ShopifyUtils();
