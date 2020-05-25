@@ -1,0 +1,86 @@
+.shopify_utils-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 9999;
+
+  &.is-active {
+    .shopify_utils-sidebar__inner {
+      width: 200px;
+      padding: 20px;
+    }
+  }
+}
+
+.shopify_utils-toggle {
+  position: absolute;
+  top: 50%;
+  right: 100%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  &:after {
+    content: '';
+    display: block;
+    width: 7px;
+    height: 7px;
+    margin: 0 auto;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    transform: rotate(45deg);
+  }
+
+  &.is-active:after {
+    transform: rotate(-135deg);
+  }
+}
+
+
+.shopify_utils-sidebar__inner {
+  overflow: hidden;
+  background-color: #fff;
+  width: 0;
+  height: 100vh;
+  transition: width 0.5s, padding 0.5s;
+  box-shadow: -2px 0 5px rgba(0,0,0,.1);
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  li {
+    padding: 0 0 5px;
+    border-bottom: 1px solid #dfe3e8;
+  }
+
+  ul {
+    a {
+      display: flex;
+      align-items: center;
+      color: #454f5b;
+      white-space: nowrap;
+      text-decoration: none;
+      opacity: 0.7;
+  
+      &:hover {
+        opacity: 1;
+      }
+    }
+
+    svg {
+      margin-right: 4px;
+    }
+  }
+
+  .icon-duplicate {
+    width: 16px;
+    height: 16px;
+  }
+}

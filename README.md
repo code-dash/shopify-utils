@@ -60,7 +60,7 @@ Duplication is supported for the following page types
 
 - duplication will open new box where you can choose if metafields should be included
 - webpack for SCSS support
-- convert static CSS js file to SCSS
+- static CSS js file to SCSS
 
 ## [0.1.0] - 2020-05-24
 
