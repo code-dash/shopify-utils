@@ -50,6 +50,16 @@ Duplication is supported for the following page types
 
 # Change Log
 
+## [0.1.1] - 2020-05-25
+
+### Added
+
+- metafield export option
+
+### Updated
+
+- diplication will open new box where you can choose if metafields should be included
+
 ## [0.1.0] - 2020-05-24
 
 ### Added
