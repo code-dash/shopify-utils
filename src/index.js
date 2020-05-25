@@ -25,6 +25,10 @@ import { appendHTML, duplicateHTML } from './duplicate/html';
 import duplicateSubmit from './duplicate/submit';
 import { extractMetafields } from './duplicate/metafields';
 
+import { dynamicContentHTML, generateType, appendDynamicContentHTML, dynamicRow } from './dynamic-content/html';
+import dynamic from './dynamic-content/dynamic';
+import conditionPopulate from './dynamic-content/change';
+
 class ShopifyUtils {
   constructor() {
     this.csrfToken = '';
@@ -81,5 +85,16 @@ Object.assign(ShopifyUtils.prototype, {
   extractMetafields
 })
 
-const shopifyUtils = new ShopifyUtils();
-shopifyUtils.init();
+// Dynamic Content
+Object.assign(ShopifyUtils.prototype, {
+  dynamic,
+  dynamicContentHTML, 
+  generateType,
+  appendDynamicContentHTML,
+  dynamicRow,
+  conditionPopulate
+})
+
+
+window.shopifyUtils = new ShopifyUtils();
+window.shopifyUtils.init();
