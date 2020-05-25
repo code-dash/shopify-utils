@@ -86,7 +86,7 @@ function styleTag(){
     .${this.prefix}-sidepanel {
       position: absolute;
       top: 0;
-      right: 200px;
+      right: 100%;
       min-width: 300px;
       padding: 20px;
       height: auto;
@@ -125,6 +125,9 @@ function styleTag(){
       position: absolute;
       top: 10px;
       right: 20px;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
     }
 
     .${this.prefix}-sidepanel__close:before,
@@ -137,7 +140,6 @@ function styleTag(){
       width: 1px;
       height: 20px;
       background:#000;
-      cursor: pointer;
     }
 
     .${this.prefix}-sidepanel__close:before {

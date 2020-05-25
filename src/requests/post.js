@@ -9,7 +9,7 @@ function postRequest(url, method, body){
     credentials: 'include',
     body: JSON.stringify(body)
   }).then(r => {
-    console.log(r.headers.get('link'));
+    // console.log(r.headers.get('link'));
     return r.json()
   }).then(res => res).catch(e => e.json())
 }

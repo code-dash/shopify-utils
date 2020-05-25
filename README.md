@@ -38,11 +38,8 @@ Duplication is supported for the following page types
 - `/admin/blogs/BLOG_ID/articles/ID`
 - `/admin/menus/ID`
 
-**At the moment metafields are not included in the duplication!**
-
 ## Planned features
 
-- Add metafield duplication support
 - Multiply delete for orders directly from the listing page
 - Export/Import with some exceptions
 - Find and replace/update functionality for pages/products/collections/blogs/articles based on dynamic conditions
@@ -54,11 +51,12 @@ Duplication is supported for the following page types
 
 ### Added
 
-- metafield export option
+- metafields duplication option for all page types
+- metafields duplication for product variants
 
 ### Updated
 
-- diplication will open new box where you can choose if metafields should be included
+- duplication will open new box where you can choose if metafields should be included
 
 ## [0.1.0] - 2020-05-24
 

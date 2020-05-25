@@ -8,7 +8,7 @@ function getRequest(url, method){
     },
     credentials: 'include'
   }).then(r => {
-    console.log(r.headers.get('link'));
+    // console.log(r.headers.get('link'));
     return r.json()
   }).then(res => res).catch(e => e.json())
 };

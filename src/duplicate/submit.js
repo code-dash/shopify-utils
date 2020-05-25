@@ -13,7 +13,8 @@ export default function duplicateSubmit(){
 
     for (let index = 0; index < itemArray.length; index++) {
       const element = itemArray[index];
-      let metafieldUlr = `${element.id}/metafields.json`;
+      const elementID = element.id;
+      const metafieldUlr = `${element.id}/metafields.json`;
       delete element.id;
       delete element.handle;
       delete element.admin_graphql_api_id;
@@ -29,6 +30,15 @@ export default function duplicateSubmit(){
         if(checkboxes.indexOf('metafield') > -1){
           const metaModified = await self.extractMetafields(`products/${metafieldUlr}`)
           element.metafields = metaModified;
+        }
+        if(checkboxes.indexOf('variant-metafield') > -1){
+          for (let i = 0; i < element.variants.length; i++) {
+            const variant = element.variants[i];
+            const metaModified = await self.extractMetafields(`products/${elementID}/variants/${variant.id}/metafields.json`)
+            variant.metafields = metaModified;
+            console.log(metaModified, variant);
+            
+          }
         }
         await self.duplicate_product(element)
       } else if(currentPage === 'page' || currentPage === 'pages'){
