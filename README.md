@@ -49,6 +49,16 @@ Duplication is supported for the following page types
 
 # Change Log
 
+## [0.2.0] - 2020-05-26
+
+### Added
+
+- initial dynamic content logic
+
+### Updated
+
+- html append
+
 ## [0.1.1] - 2020-05-25
 
 ### Added
