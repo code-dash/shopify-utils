@@ -1,14 +1,30 @@
+const conditions = [
+  {
+    name: 'Product title',
+    target: "title",
+    value: "string",
+    scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
+    methods: ['is equal to', 'is not equal to', 'starts with', 'ends with', 'contains', 'does not contain'],
+  }
+]
+
 const options = [
   {
-    scope: ['products', 'product'],
-    fields: [
-      {
-        type: ["title", 'Product title'],
-        conditions: ['is equal to', 'is not equal to', 'starts with', 'ends with', 'contains', 'does not contain'],
-        value: "string"
-      }
+    name: "Title",
+    target: "title",
+    value: "string",
+    scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
+    methods: [
+      "Lowercase",
+      "Uppercase",
+      "Insert before",
+      "Insert after",
+      "Replace"
     ]
   }
 ]
 
-module.exports = options;
+module.exports = {
+  conditions,
+  options
+};

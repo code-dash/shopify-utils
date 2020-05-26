@@ -6,18 +6,21 @@ function clickEvent(){
       const type = this.getAttribute('data-type');
       const currentPage = self.getCurrentPageType();
       const supportDuplicatePages = ['product', 'products', 'collection', 'collections', 'page', 'pages', 'article', 'articles', 'blog', 'blogs', 'navigation'];
-      if(supportDuplicatePages.indexOf(currentPage) === -1){
+      if(supportDuplicatePages.indexOf(currentPage[0]) === -1){
         alert('Not Supported for duplication');
-        return;
+        return false;
       } 
       self[type]();
     })
   })
 
-  this.sidebar.querySelector(`.${this.prefix}-sidepanel__close`).addEventListener('click', (e) => {
-    this.sidebar.querySelectorAll(`.${this.prefix}-sidepanel`).forEach(item => {
-      item.classList.remove(this.activeClass)
-    })
+  this.sidebar.addEventListener('click', (e) => {
+    const target = e.target;
+    if(target.classList.contains(`${this.prefix}-sidepanel__close`)){
+      this.sidebar.querySelectorAll(`.${this.prefix}-sidepanel`).forEach(item => {
+        item.classList.remove(this.activeClass)
+      })
+    }
   })
 }
 

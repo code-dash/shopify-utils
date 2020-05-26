@@ -2,70 +2,51 @@ export default function duplicateSubmit(){
   const self = this;
   const currentPage = this.getCurrentPageType();
   
-  this.sidebar.querySelector(`.js-${this.prefix}-duplicate-form`).addEventListener('submit', async function(e){
+  this.sidebar.addEventListener('submit', async function(e){
     e.preventDefault();
-    const itemArray = await self.getSelectedItems();
-    let checkboxes = [];
-
-    this.querySelectorAll('input[name="duplicate"]:checked').forEach(item => {
-      checkboxes.push(item.value);
-    })
-
-    for (let index = 0; index < itemArray.length; index++) {
-      const element = itemArray[index];
-      const elementID = element.id;
-      const metafieldUlr = `${element.id}/metafields.json`;
-      delete element.id;
-      delete element.handle;
-      delete element.admin_graphql_api_id;
-      delete element.updated_at;
-      
-      if(currentPage === 'collection' || currentPage === 'collections'){
-        if(checkboxes.indexOf('metafield') > -1){
-          const metaModified = await self.extractMetafields(`collections/${metafieldUlr}`)
-          element.metafields = metaModified;
-        }
-        await self.duplicate_collection(element);
-      } else if(currentPage === 'product' || currentPage === 'products'){
-        if(checkboxes.indexOf('metafield') > -1){
-          const metaModified = await self.extractMetafields(`products/${metafieldUlr}`)
-          element.metafields = metaModified;
-        }
-        if(checkboxes.indexOf('variant-metafield') > -1){
-          for (let i = 0; i < element.variants.length; i++) {
-            const variant = element.variants[i];
-            const metaModified = await self.extractMetafields(`products/${elementID}/variants/${variant.id}/metafields.json`)
-            variant.metafields = metaModified;
-            console.log(metaModified, variant);
-            
-          }
-        }
-        await self.duplicate_product(element)
-      } else if(currentPage === 'page' || currentPage === 'pages'){
-        if(checkboxes.indexOf('metafield') > -1){
-          const metaModified = await self.extractMetafields(`page/${metafieldUlr}`)
-          element.metafields = metaModified;
-        }
-        await self.duplicate_page(element)
-      } else if(currentPage === 'blog' || currentPage === 'blogs'){
-        if(checkboxes.indexOf('metafield') > -1){
-          const metaModified = await self.extractMetafields(`blogs/${metafieldUlr}`)
-          element.metafields = metaModified;
-        }
-        await self.duplicate_blog(element)
-      } else if(currentPage === 'article' || currentPage === 'articles'){
-        if(checkboxes.indexOf('metafield') > -1){
-          const metaModified = await self.extractMetafields(`articles/${metafieldUlr}`)
-          element.metafields = metaModified;
-        }
-        await self.duplicate_article(element)
-      } 
-    }
+    const target = e.target;
     
-    if(currentPage === 'navigation') {
-      await self.duplicate_navigation()
-    }
+    if(target.classList.contains(`js-shopify_utils-duplicate-form`)){
+      const itemArray = await self.getSelectedItems();
+      let checkboxes = [];
 
-    alert('Done!')
+      if(!itemArray){
+        return;
+      }
+  
+      this.querySelectorAll('input[name="duplicate"]:checked').forEach(item => {
+        checkboxes.push(item.value);
+      })
+  
+      if(currentPage[0] === 'navigation') {
+        await self.duplicate_navigation()
+      } else {
+        for (let index = 0; index < itemArray.length; index++) {
+          const element = itemArray[index];
+          const elementID = element.id;
+          const metafieldUlr = `${element.id}/metafields.json`;
+          delete element.id;
+          delete element.handle;
+          delete element.admin_graphql_api_id;
+          delete element.updated_at;
+          
+          if(checkboxes.indexOf('metafield') > -1){
+            const metaModified = await self.extractMetafields(`${currentPage[1]}/${metafieldUlr}`)
+            element.metafields = metaModified;
+          }
+          if(checkboxes.indexOf('variant-metafield') > -1){
+            for (let i = 0; i < element.variants.length; i++) {
+              const variant = element.variants[i];
+              const metaModified = await self.extractMetafields(`${currentPage[1]}/${elementID}/variants/${variant.id}/metafields.json`)
+              variant.metafields = metaModified;
+            }
+          }
+    
+          await self[currentPage[2]](element);
+        }
+      }
+  
+      alert('Done!')
+    }
   })
 }

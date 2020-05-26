@@ -1,5 +1,5 @@
 function getSelectedInpus(){
-  const currentPage = this.getCurrentPageType();
+  const currentPage = this.getCurrentPageType()[0];
   let ids = [];
   if(currentPage === 'product' || currentPage === 'collection' || currentPage === 'page' || currentPage === 'order' || currentPage === 'blog' || currentPage === 'article' || currentPage === 'navigation'){
     const id = window.location.pathname.split('/').pop();

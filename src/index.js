@@ -21,11 +21,11 @@ import duplicate_order from './duplicate/order';
 import duplicate_blog from './duplicate/blog';
 import duplicate_article from './duplicate/article';
 import duplicate_navigation from './duplicate/navigation';
-import { appendHTML, duplicateHTML } from './duplicate/html';
+import { appendHTML } from './duplicate/html';
 import duplicateSubmit from './duplicate/submit';
 import { extractMetafields } from './duplicate/metafields';
 
-import { dynamicContentHTML, generateType, appendDynamicContentHTML, dynamicRow } from './dynamic-content/html';
+import { dynamicContentHTML, generateConditionType, appendDynamicContentHTML, dynamicRow, generateOptionType } from './dynamic-content/html';
 import dynamic from './dynamic-content/dynamic';
 import conditionPopulate from './dynamic-content/change';
 
@@ -80,7 +80,6 @@ Object.assign(ShopifyUtils.prototype, {
   duplicate_article,
   duplicate_navigation,
   appendHTML,
-  duplicateHTML,
   duplicateSubmit,
   extractMetafields
 })
@@ -89,10 +88,11 @@ Object.assign(ShopifyUtils.prototype, {
 Object.assign(ShopifyUtils.prototype, {
   dynamic,
   dynamicContentHTML, 
-  generateType,
+  generateConditionType,
   appendDynamicContentHTML,
   dynamicRow,
-  conditionPopulate
+  conditionPopulate,
+  generateOptionType
 })
 
 
