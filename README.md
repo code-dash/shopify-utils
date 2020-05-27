@@ -49,6 +49,12 @@ Duplication is supported for the following page types
 
 # Change Log
 
+## [0.2.1] - 2020-05-27
+
+### Updated
+
+- small html updates
+
 ## [0.2.0] - 2020-05-26
 
 ### Added
