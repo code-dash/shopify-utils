@@ -19,7 +19,8 @@ const options = [
       "Uppercase",
       "Insert before",
       "Insert after",
-      "Replace"
+      "Replace",
+      "Replace Regex"
     ]
   }
 ]

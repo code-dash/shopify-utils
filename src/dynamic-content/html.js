@@ -5,17 +5,35 @@ export function dynamicContentHTML(){
     <div class="${this.prefix}-dynamic-content ${this.prefix}-sidepanel">
       <span class="${this.prefix}-sidepanel__close"></span>
       <form class="js-${this.prefix}-dynamic-form">
-        <h4>Conditions</h4>
-        <div class="js-${this.prefix}-dynamic-rows">
-          ${this.dynamicRow()}
+        <div class="condition-holder">
+          <h4>Conditions</h4>
+          <div class="condition-type">
+            <label>
+              <input type="radio" name="condition-type" value="and"> AND
+            </label>
+            <label>
+              <input type="radio" name="condition-type" value="or"> OR
+            </label>
+          </div>
+          <div class="js-${this.prefix}-dynamic-rows">
+            ${this.dynamicRow()}
+          </div>
+          <div class="condition-response"></div>
+          <button type="button" class="btn js-start-conditions">Start</button>
+          <button type="button" class="btn js-next">Next</button>
         </div>
-        <h4>Target</h4>
-        <div class="js-${this.prefix}-option-row">
-          ${this.generateOptionType()}
-          <select class="dynamic-option-method"></select>
+        <div class="target-holder">
+          <h4>Target</h4>
+          <div class="js-${this.prefix}-option-row">
+            ${this.generateOptionType()}
+            <select class="dynamic-option-method"></select>
+          </div>
+          <div class="io-row">
+            <input class="input-field" value="" placeholder="">
+            <input class="output-field" value="" placeholder="">
+            <button type="button" class="btn js-start-dynamic">Start</button>
+          </div>
         </div>
-        <textarea class="entry"></textarea>
-        <button type="submit" class="btn">Start</button>
       </form>
     </div>
   `;
@@ -24,6 +42,7 @@ export function dynamicContentHTML(){
 export function dynamicRow(){
   return `
     <div class="dynamic-row">
+      <span class="dynamic-row__clone"></span>
       ${this.generateConditionType()}
       <select class="dynamic-condition"></select>
       <input type="text" class="dynamic-check value="" />
