@@ -8,6 +8,7 @@ import htmlSidebar from './lib/html_sidebar';
 import getSelectedInpus from './lib/get_selected_inputs';
 import getSelectedItems from './lib/get_selected_items';
 import generateSidebar from './lib/generate_sidebar';
+import addAllScripts from './lib/add_scripts';
 
 import postRequest from './requests/post';
 import getRequest from './requests/get';
@@ -45,8 +46,8 @@ class ShopifyUtils {
     this.generateSidebar();
     this.toggleSidebar();
     this.clickEvent();
-
     this.duplicateSubmit();
+    this.addAllScripts();
   }
 }
 
@@ -59,7 +60,8 @@ Object.assign(ShopifyUtils.prototype, {
   htmlSidebar,
   getSelectedInpus,
   getSelectedItems,
-  generateSidebar
+  generateSidebar,
+  addAllScripts
 })
 
 // Request

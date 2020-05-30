@@ -10,12 +10,12 @@ async function getSelectedItems(){
   }
 
   if(currentPage == 'products' || currentPage == 'collections'){
-    items = await this.getRequest(`${currentPage}?ids=${idsString}`, 'GET')
+    items = await this.getRequest(`${currentPage}?ids=${idsString}`)
     return items[currentPage];
   }
 
   if(currentPage === 'pages'){
-    items = await this.getRequest(`pages.json?ids=${idsString}`, 'GET')
+    items = await this.getRequest(`pages.json?ids=${idsString}`)
     const filterItems = items.pages.filter(item => idsString.indexOf(item.id) > -1);
     return filterItems;
   }
@@ -23,7 +23,7 @@ async function getSelectedItems(){
   if(currentPage === 'blogs'){
     for (let index = 0; index < ids.length; index++) {
       const id = ids[index];
-      item = await this.getRequest(`blogs/${id}.json`, 'GET')
+      item = await this.getRequest(`blogs/${id}.json`)
       items.push(item.blog);
     }
     return items;
@@ -32,7 +32,7 @@ async function getSelectedItems(){
   if(currentPage === 'articles'){
     for (let index = 0; index < ids.length; index++) {
       const id = ids[index];
-      item = await this.getRequest(`articles/${id}.json`, 'GET')
+      item = await this.getRequest(`articles/${id}.json`)
       items.push(item.article);
     }
     return items;

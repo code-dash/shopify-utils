@@ -1,4 +1,5 @@
 import { conditions, options } from './options';
+import initCodeEditor from './code-editor';
 
 export function dynamicContentHTML(){
   return `
@@ -31,12 +32,31 @@ export function dynamicContentHTML(){
           <div class="io-row">
             <input class="input-field" value="" placeholder="">
             <input class="output-field" value="" placeholder="">
+            ${codeEditorWrapper()}
             <button type="button" class="btn js-start-dynamic">Start</button>
           </div>
         </div>
       </form>
     </div>
   `;
+}
+
+function codeEditorWrapper(){
+  return `<div class="code-editor-wrapper">
+    <div class="notice">
+      <h4>Custom code execution</h4>
+      <p class="red-text">The field below accepts any valid Javascript code, don't use it if you don't know how to write it properly!</p>
+    </div>
+    <textarea class="code-editor"></textarea>
+    <h5>Legend</h5>
+    <pre><strong>shopifyUtils.items</strong> - this is the array of the found results from the conditions. You can loop it and do what ever you like.</pre>
+    <pre><strong>shopifyUtils.postRequest(url, method, body)</strong> - this is the post method that you can use (it includes the CSRF token that you need to make a request). It accepts 3 arguments. 
+    * URL - the part after the API version, for example "products.json"
+    * METHOD - it can be POST/PUT/DELETE
+    * BODY - the item body that you must get from shopifyUtils.items for the specific index</pre>
+    <pre><strong>Ctrl+Space</strong> - this is the combination you can use to autocomplete javascript methods</pre>
+    <pre><strong>F11</strong> - when you are focused in the textarea you can press F11 to go fullscreen for the code editor</pre>
+  </div>`
 }
 
 export function dynamicRow(){
@@ -56,6 +76,7 @@ export function appendDynamicContentHTML(){
     return;
   }
   this.sidebar.querySelector(`.${this.prefix}-modals`).innerHTML = this.dynamicContentHTML();
+  initCodeEditor();
 }
 
 export function generateConditionType(){

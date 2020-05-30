@@ -1,6 +1,6 @@
-function getRequest(url, method){
+function getRequest(url){
   return fetch(`/admin/api/${this.apiVersion}/${url}`, {
-    method: method,
+    method: "GET",
     headers: {
       'accept': 'application/json',
       'content-type': 'application/json',
