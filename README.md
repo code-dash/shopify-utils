@@ -49,6 +49,16 @@ Duplication is supported for the following page types
 
 # Change Log
 
+## [0.2.2] - 2020-05-30
+
+## Added
+
+- CodeMirror logic for the soon to be custom JS method
+
+### Updated
+
+- the look of the dynamic sidepanel
+
 ## [0.2.1] - 2020-05-27
 
 ### Updated
