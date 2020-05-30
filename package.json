@@ -4,7 +4,7 @@
   "description": "Shopify utilities for the admin panel",
   "main": "index.js",
   "dependencies": {
-    "codemirror-minified": "^5.54.0"
+
   },
   "devDependencies": {
     "clean-webpack-plugin": "^3.0.0",
