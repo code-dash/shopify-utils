@@ -12,6 +12,7 @@ import addAllScripts from './lib/add_scripts';
 
 import postRequest from './requests/post';
 import getRequest from './requests/get';
+import getRequestAll from './requests/get_all';
 import createMenu  from './requests/navigation_post';
 
 import duplicate from './duplicate/duplicate';
@@ -29,6 +30,7 @@ import { extractMetafields } from './duplicate/metafields';
 import { dynamicContentHTML, generateConditionType, appendDynamicContentHTML, dynamicRow, generateOptionType } from './dynamic-content/html';
 import dynamic from './dynamic-content/dynamic';
 import conditionPopulate from './dynamic-content/change';
+import conditionEvents from './dynamic-content/conditions_get';
 
 class ShopifyUtils {
   constructor() {
@@ -39,6 +41,7 @@ class ShopifyUtils {
     this.toggle = null;
     this.activeClass = 'is-active';
     this.duplicatePrefix = ' Copy';
+    this.allItems = [];
   }
   
   init(){
@@ -68,7 +71,8 @@ Object.assign(ShopifyUtils.prototype, {
 Object.assign(ShopifyUtils.prototype, {
   postRequest,
   getRequest,
-  createMenu
+  createMenu,
+  getRequestAll
 })
 
 // Duplicate
@@ -94,7 +98,8 @@ Object.assign(ShopifyUtils.prototype, {
   appendDynamicContentHTML,
   dynamicRow,
   conditionPopulate,
-  generateOptionType
+  generateOptionType,
+  conditionEvents
 })
 
 

@@ -13,7 +13,7 @@ function clickEvent(){
       self[type]();
     })
   })
-
+  
   this.sidebar.addEventListener('click', (e) => {
     const target = e.target;
     if(target.classList.contains(`${this.prefix}-sidepanel__close`)){

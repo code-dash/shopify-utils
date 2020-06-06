@@ -20,8 +20,7 @@ export function dynamicContentHTML(){
             ${this.dynamicRow()}
           </div>
           <div class="condition-response"></div>
-          <button type="button" class="btn js-start-conditions">Start</button>
-          <button type="button" class="btn js-next">Next</button>
+          <button type="button" class="btn js-start-conditions">Get Objects</button>
         </div>
         <div class="target-holder">
           <h4>Target</h4>
@@ -36,7 +35,7 @@ export function dynamicContentHTML(){
             <button type="button" class="btn js-start-dynamic">Start</button>
           </div>
         </div>
-      </form>
+      
     </div>
   `;
 }
@@ -65,7 +64,7 @@ export function dynamicRow(){
       <span class="dynamic-row__clone"></span>
       ${this.generateConditionType()}
       <select class="dynamic-condition"></select>
-      <input type="text" class="dynamic-check value="" />
+      <input type="text" class="dynamic-check" value="" />
     </div>
   `
 }
@@ -77,6 +76,7 @@ export function appendDynamicContentHTML(){
   }
   this.sidebar.querySelector(`.${this.prefix}-modals`).innerHTML = this.dynamicContentHTML();
   initCodeEditor();
+  this.conditionEvents();
 }
 
 export function generateConditionType(){
