@@ -1,6 +1,6 @@
 {
   "name": "shopify-utils",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Shopify utilities for the admin panel",
   "main": "index.js",
   "dependencies": {
