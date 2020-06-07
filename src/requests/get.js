@@ -7,10 +7,7 @@ function getRequest(url){
       'x-csrf-token': this.csrfToken
     },
     credentials: 'include'
-  }).then(r => {
-    console.log(r.headers.get('link'));
-    return r.json()
-  }).then(res => res).catch(e => e.json())
+  }).then(r => r.json()).then(res => res).catch(e => e.json())
 };
 
 module.exports = getRequest;

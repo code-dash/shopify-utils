@@ -11,7 +11,6 @@ function getRequestAll(url){
     }).then(r => {
       r.json().then((response) => {
         this.allItems = this.allItems.concat(Object.values(response).pop())
-        console.log(this.allItems);
         const headerLink = r.headers.get('link');
         if(headerLink){
           const match = r.headers.get('link').match(/<[^;]+\/(\w+\.json[^;]+)>;\srel="next"/);

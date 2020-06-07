@@ -4,7 +4,28 @@ const conditions = [
     target: "title",
     value: "string",
     scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
-    methods: ['is equal to', 'is not equal to', 'starts with', 'ends with', 'contains', 'does not contain'],
+    methods: [
+      'is equal to',
+      'is not equal to',
+      'starts with',
+      'ends with',
+      'contains',
+      'does not contain'
+    ],
+  },
+  {
+    name: 'Product Content',
+    target: "body_html",
+    value: "string",
+    scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
+    methods: [
+      'is equal to',
+      'is not equal to',
+      'starts with',
+      'ends with',
+      'contains',
+      'does not contain'
+    ],
   }
 ]
 
@@ -24,6 +45,7 @@ const options = [
     ]
   }
 ]
+
 
 module.exports = {
   conditions,

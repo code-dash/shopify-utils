@@ -13,9 +13,12 @@ export default function conditionEvents(){
           checkValue,
           orAnd
         }
-        this.allItems = [];
         const currentPage = this.getCurrentPageType();
-        await this.getRequestAll(`${currentPage[1]}.json?limit=250`);
+        if(!this.allItems.length){
+          await this.getRequestAll(`${currentPage[1]}.json?limit=250`);
+          this.filterInit();
+          console.log(this.filteredItems);
+        }
       } else {
         alert("Please set all conditions")
       }

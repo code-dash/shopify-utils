@@ -27,10 +27,17 @@ import { appendHTML } from './duplicate/html';
 import duplicateSubmit from './duplicate/submit';
 import { extractMetafields } from './duplicate/metafields';
 
-import { dynamicContentHTML, generateConditionType, appendDynamicContentHTML, dynamicRow, generateOptionType } from './dynamic-content/html';
+import { 
+  dynamicContentHTML, 
+  generateConditionType, 
+  appendDynamicContentHTML, 
+  dynamicRow, 
+  generateOptionType 
+} from './dynamic-content/html';
 import dynamic from './dynamic-content/dynamic';
 import conditionPopulate from './dynamic-content/change';
 import conditionEvents from './dynamic-content/conditions_get';
+import filterInit from './dynamic-content/filtration/init';
 
 class ShopifyUtils {
   constructor() {
@@ -42,6 +49,7 @@ class ShopifyUtils {
     this.activeClass = 'is-active';
     this.duplicatePrefix = ' Copy';
     this.allItems = [];
+    this.filteredItems = [];
   }
   
   init(){
@@ -99,7 +107,8 @@ Object.assign(ShopifyUtils.prototype, {
   dynamicRow,
   conditionPopulate,
   generateOptionType,
-  conditionEvents
+  conditionEvents,
+  filterInit
 })
 
 

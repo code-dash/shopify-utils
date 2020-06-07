@@ -9,7 +9,9 @@ function clickEvent(){
       if(supportDuplicatePages.indexOf(currentPage[0]) === -1){
         alert('Not Supported for duplication');
         return false;
-      } 
+      }
+      this.allItems = [];
+      self.sidebar.querySelector('.shopify_utils-modals').innerHTML = '';
       self[type]();
     })
   })
