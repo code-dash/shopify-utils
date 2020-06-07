@@ -54,6 +54,7 @@ Duplication is supported for the following page types
 ## Added
 
 - filtration logic for AND and OR
+- update logic for lowercase/uppercase/insert before/insert after/replace/replace regexp/custom code
 
 ## [0.2.3] - 2020-06-06
 
