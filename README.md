@@ -49,11 +49,17 @@ Duplication is supported for the following page types
 
 # Change Log
 
+## [0.2.4] - 2020-06-07
+
+## Added
+
+- filtration logic for AND and OR
+
 ## [0.2.3] - 2020-06-06
 
 ## Added
 
-- Added getRequestAll method for grabing objects with pagination
+- getRequestAll method for grabing objects with pagination
 
 ## [0.2.2] - 2020-05-30
 
