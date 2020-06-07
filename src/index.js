@@ -40,6 +40,7 @@ import conditionEvents from './dynamic-content/conditions_get';
 import filterInit from './dynamic-content/filtration/init';
 import methodInit from './dynamic-content/methods/methods_init';
 import startUpdate from './dynamic-content/start_update';
+import {dynamicAdd,dynamicRemove} from './dynamic-content/dynamic_add_remove';
 
 class ShopifyUtils {
   constructor() {
@@ -62,6 +63,8 @@ class ShopifyUtils {
     this.clickEvent();
     this.duplicateSubmit();
     this.addAllScripts();
+    this.dynamicAdd();
+    this.dynamicRemove();
   }
 }
 
@@ -113,7 +116,9 @@ Object.assign(ShopifyUtils.prototype, {
   conditionEvents,
   filterInit,
   methodInit,
-  startUpdate
+  startUpdate,
+  dynamicAdd,
+  dynamicRemove
 })
 
 

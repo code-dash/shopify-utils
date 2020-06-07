@@ -61,7 +61,10 @@ function codeEditorWrapper(){
 export function dynamicRow(){
   return `
     <div class="dynamic-row">
-      <span class="dynamic-row__clone"></span>
+      <div class="dynamic-row__cta">
+        <span class="dynamic-row__clone"></span>
+        <span class="dynamic-row__remove"></span>
+      </div>
       ${this.generateConditionType()}
       <select class="dynamic-condition"></select>
       <input type="text" class="dynamic-check" value="" />
