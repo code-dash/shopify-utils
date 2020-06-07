@@ -10,7 +10,7 @@ export function dynamicContentHTML(){
           <h4>Conditions</h4>
           <div class="condition-type">
             <label>
-              <input type="radio" name="condition-type" value="and"> AND
+              <input type="radio" name="condition-type" checked value="and"> AND
             </label>
             <label>
               <input type="radio" name="condition-type" value="or"> OR
@@ -48,11 +48,11 @@ function codeEditorWrapper(){
     </div>
     <textarea class="code-editor"></textarea>
     <h5>Legend</h5>
-    <pre><strong>shopifyUtils.items</strong> - this is the array of the found results from the conditions. You can loop it and do what ever you like.</pre>
+    <pre><strong>shopifyUtils.filteredItems</strong> - this is the array of the found results from the conditions. You can loop it and do what ever you like.</pre>
     <pre><strong>shopifyUtils.postRequest(url, method, body)</strong> - this is the post method that you can use (it includes the CSRF token that you need to make a request). It accepts 3 arguments. 
     * URL - the part after the API version, for example "products.json"
     * METHOD - it can be POST/PUT/DELETE
-    * BODY - the item body that you must get from shopifyUtils.items for the specific index</pre>
+    * BODY - the item body that you must get from shopifyUtils.filteredItems for the specific index</pre>
     <pre><strong>Ctrl+Space</strong> - this is the combination you can use to autocomplete javascript methods</pre>
     <pre><strong>F11</strong> - when you are focused in the textarea you can press F11 to go fullscreen for the code editor</pre>
   </div>`
@@ -75,8 +75,9 @@ export function appendDynamicContentHTML(){
     return;
   }
   this.sidebar.querySelector(`.${this.prefix}-modals`).innerHTML = this.dynamicContentHTML();
-  initCodeEditor();
+  this.customCode = initCodeEditor();
   this.conditionEvents();
+  this.startUpdate();
 }
 
 export function generateConditionType(){

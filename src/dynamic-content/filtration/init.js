@@ -56,7 +56,7 @@ function filterInit(){
       const target = this.filteredItems.length ? this.filteredItems : this.allItems;
       this.filteredItems = target.filter(obj => callFunction(obj, item));
     } else {
-      const resullts = this.allItems.reduce((acc, val) => {
+      const results = this.allItems.reduce((acc, val) => {
         if(!this.filteredItems.some(obj => obj.id !== val.id)){
           if(callFunction(val, item)){
             acc.push(val);
@@ -64,12 +64,9 @@ function filterInit(){
         }
         return acc;
       }, [])
-      this.filteredItems = this.filteredItems.concat(resullts);
+      this.filteredItems = this.filteredItems.concat(results);
     }
   })
 }
-
-
-
 
 export default filterInit;

@@ -38,6 +38,8 @@ import dynamic from './dynamic-content/dynamic';
 import conditionPopulate from './dynamic-content/change';
 import conditionEvents from './dynamic-content/conditions_get';
 import filterInit from './dynamic-content/filtration/init';
+import methodInit from './dynamic-content/methods/methods_init';
+import startUpdate from './dynamic-content/start_update';
 
 class ShopifyUtils {
   constructor() {
@@ -50,6 +52,7 @@ class ShopifyUtils {
     this.duplicatePrefix = ' Copy';
     this.allItems = [];
     this.filteredItems = [];
+    this.customCode = {};
   }
   
   init(){
@@ -108,7 +111,9 @@ Object.assign(ShopifyUtils.prototype, {
   conditionPopulate,
   generateOptionType,
   conditionEvents,
-  filterInit
+  filterInit,
+  methodInit,
+  startUpdate
 })
 
 

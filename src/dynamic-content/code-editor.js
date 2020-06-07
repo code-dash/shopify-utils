@@ -19,7 +19,8 @@ function setFullScreen(cm, full) {
 }
 
 export default function initCodeEditor(){
-  CodeMirror.fromTextArea(document.querySelector('.code-editor'), {
+  const textarea = document.querySelector('.code-editor');
+  return CodeMirror.fromTextArea(textarea, {
     lineWrapping: true,
     mode:  "javascript",
     theme: "dracula",
@@ -33,6 +34,8 @@ export default function initCodeEditor(){
       }
     },
     gutters: ["CodeMirror-lint-markers"],
-    lint: true
+    lint: {
+      esversion: 6
+    }
   });
 }

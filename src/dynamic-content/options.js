@@ -41,7 +41,8 @@ const options = [
       "Insert before",
       "Insert after",
       "Replace",
-      "Replace Regex"
+      "Replace RegEx",
+      "Custom Code"
     ]
   }
 ]
