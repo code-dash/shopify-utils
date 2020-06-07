@@ -49,14 +49,14 @@ function filterInit(){
     acc.push([type, condition, check]);
     return acc;
   }, []);
-  this.filteredItems = conditionType === 'and' ? [...this.allItems] : [];
+  this.filteredItems = [];
+  
   conditionArray.forEach(item => {
-    let resullts;
     if(conditionType === 'and'){
-      resullts = this.filteredItems.filter(obj => callFunction(obj, item));
-      this.filteredItems.concat(resullts);
+      const target = this.filteredItems.length ? this.filteredItems : this.allItems;
+      this.filteredItems = target.filter(obj => callFunction(obj, item));
     } else {
-      resullts = this.allItems.reduce((acc, val) => {
+      const resullts = this.allItems.reduce((acc, val) => {
         if(!this.filteredItems.some(obj => obj.id !== val.id)){
           if(callFunction(val, item)){
             acc.push(val);
@@ -64,8 +64,8 @@ function filterInit(){
         }
         return acc;
       }, [])
+      this.filteredItems = this.filteredItems.concat(resullts);
     }
-    this.filteredItems = this.filteredItems.concat(resullts);
   })
 }
 

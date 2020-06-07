@@ -16,9 +16,9 @@ export default function conditionEvents(){
         const currentPage = this.getCurrentPageType();
         if(!this.allItems.length){
           await this.getRequestAll(`${currentPage[1]}.json?limit=250`);
-          this.filterInit();
-          console.log(this.filteredItems);
         }
+        this.filterInit();
+        console.log(this.filteredItems);
       } else {
         alert("Please set all conditions")
       }
