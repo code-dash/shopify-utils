@@ -78,15 +78,15 @@ The methods are:
 
 #### Custom code
 
-This option is only for developers that understand Javascript coding! Don't copy/paste random codes that you don't know how works!
+Only for developers that understand Javascript coding! Don't copy/paste random codes here that can break your store! It relies on eval function!
 
-This options allows for you to create a custom script that suits your needs for the specific items that you've filtered.
+This option allows you to create a custom script that suits your needs for the specific items that you've filtered.
 
 You have access to the filtered items via the object `shopifyUtils.filteredItems` and to the request method `shopifyUtils.postRequest(URL, METHOD, OBJECT)` which returns a promise.
 
-Test your code before you start it!
+Double test your code before you start it!
 
-Example custom code:
+Example custom code where we attach "updated" text to the end of the title for each product:
 
 ```js
 (async () => {
