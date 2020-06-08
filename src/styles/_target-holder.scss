@@ -1,0 +1,7 @@
+.target-holder {
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}

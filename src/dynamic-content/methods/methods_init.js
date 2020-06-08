@@ -81,9 +81,11 @@ async function methodInit(target, type, text1, text2){
       const updatedItem = {
         [objName]: callFunction(target, type, item, text1, text2)
       };
-      await this.postRequest(`${currentPage[0]}/${item.id}.json`, "PUT", updatedItem);
+      await this.postRequest(`${currentPage[1]}/${item.id}.json`, "PUT", updatedItem);
     }
   }
+  document.querySelector('.js-start-dynamic').classList.remove('is-loading');
+  alert('Done! Please refresh the page to see the results!')
 }
 
 export default methodInit;

@@ -41,6 +41,7 @@ import filterInit from './dynamic-content/filtration/init';
 import methodInit from './dynamic-content/methods/methods_init';
 import startUpdate from './dynamic-content/start_update';
 import {dynamicAdd,dynamicRemove} from './dynamic-content/dynamic_add_remove';
+import responseHolder from './dynamic-content/reponse-holder';
 
 class ShopifyUtils {
   constructor() {
@@ -118,7 +119,8 @@ Object.assign(ShopifyUtils.prototype, {
   methodInit,
   startUpdate,
   dynamicAdd,
-  dynamicRemove
+  dynamicRemove,
+  responseHolder
 })
 
 

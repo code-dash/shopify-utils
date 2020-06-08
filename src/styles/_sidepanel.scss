@@ -10,7 +10,6 @@
   transition: transform 0.3s;
   overflow: hidden;
   display: none;
-  align-items: center;
   box-shadow: -5px 2px 5px rgba(0,0,0,.1);
 
   &.is-active {
@@ -111,5 +110,7 @@
 }
 
 .condition-holder {
-  
+  &.is-hidden {
+    display: none;
+  }
 }

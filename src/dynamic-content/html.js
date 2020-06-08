@@ -22,9 +22,16 @@ export function dynamicContentHTML(){
           <div class="condition-response"></div>
           <button type="button" class="btn js-start-conditions">Get Objects</button>
         </div>
+        <div class="response-holder">
+          <button type="button" class="btn btn--reveal js-reveal-conditions">Reveal Conditions</button>
+          <h4>Response</h4>
+          <div class="response-holder__inner">
+          </div>
+          <button type="button" class="btn btn--next js-next">Next</button>
+        </div>
         <div class="target-holder">
           <h4>Target</h4>
-          <div class="js-${this.prefix}-option-row">
+          <div class="js-${this.prefix}-option-row ${this.prefix}-option-row">
             ${this.generateOptionType()}
             <select class="dynamic-option-method"></select>
           </div>

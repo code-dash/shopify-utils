@@ -18,7 +18,7 @@ export default function conditionEvents(){
           await this.getRequestAll(`${currentPage[1]}.json?limit=250`);
         }
         this.filterInit();
-        console.log(this.filteredItems);
+        this.responseHolder();
       } else {
         alert("Please set all conditions")
       }
