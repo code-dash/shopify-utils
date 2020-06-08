@@ -40,14 +40,86 @@ Duplication is supported for the following page types
 - `/admin/blogs/BLOG_ID/articles/ID`
 - `/admin/menus/ID`
 
+### Dynamic Content
+
+This option allows to dynamically pull pages/products/collections/blogs/articles based on dynamic conditions and update them using predefined methods or using custom code.
+
+#### Filtration
+
+The target objects for filtration are as follow:
+
+* Product title
+* Product content
+
+The conditions are:
+
+* is equal to
+* is not equal to
+* starts with
+* ends with
+* contains
+* does not contain
+
+#### Updates
+
+The the target elements are:
+
+* Title
+
+The methods are:
+
+* Lowercase
+* Uppercase
+* Insert Before
+* Insert after
+* Replace
+* Replace RegEx
+* Custom Code
+
+#### Custom code
+
+This option is only for developers that understand Javascript coding! Don't copy/paste random codes that you don't know how works!
+
+This options allows for you to create a custom script that suits your needs for the specific items that you've filtered.
+
+You have access to the filtered items via the object `shopifyUtils.filteredItems` and to the request method `shopifyUtils.postRequest(URL, METHOD, OBJECT)` which returns a promise.
+
+Test your code before you start it!
+
+Example custom code:
+
+```js
+(async () => {
+  for (let index = 0; index < shopifyUtils.filteredItems.length; index++) {
+    const element = shopifyUtils.filteredItems[index];
+    await shopifyUtils.postRequest(`products/${element.id}.json`, "PUT", {
+      product: {
+        title: element.title + ' updated'
+      }
+    })
+  }
+  alert('Done!')
+})();
+```
+
 ## Planned features
 
 - Multiply delete for orders directly from the listing page
 - Export/Import with some exceptions
-- Find and replace/update functionality for pages/products/collections/blogs/articles based on dynamic conditions
 - Metafields support
 
 # Change Log
+
+## [0.3.0] - 2020-06-08
+
+## Added
+
+- response holder for the condition output
+
+## Updated
+
+- fix dynamic content logic
+- update styles
 
 ## [0.2.4] - 2020-06-07
 

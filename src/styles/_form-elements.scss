@@ -27,7 +27,12 @@
       padding: 10px;
     }
 
+    .btn[disabled]{
+      display: none;
+    }
+
     .btn.is-loading {
+      display: block;
       position: relative;
       font-size: 0;
       line-height: 0;

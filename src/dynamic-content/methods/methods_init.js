@@ -76,6 +76,8 @@ async function methodInit(target, type, text1, text2){
   for(let index = 0; index < this.filteredItems.length; index++){
     const item = this.filteredItems[index];
     if(type === 'Custom Code'){
+      console.log(this.customCode.getValue());
+      
       eval(this.customCode.getValue());
     } else {
       const updatedItem = {
@@ -85,7 +87,9 @@ async function methodInit(target, type, text1, text2){
     }
   }
   document.querySelector('.js-start-dynamic').classList.remove('is-loading');
-  alert('Done! Please refresh the page to see the results!')
+  if(type !== 'Custom Code'){
+    alert('Done! Please refresh the page to see the results!')
+  }
 }
 
 export default methodInit;
