@@ -50,11 +50,14 @@ The target objects for filtration are as follow:
 
 * Product title
 * Product content
+* Product price
 
 The conditions are:
 
 * is equal to
 * is not equal to
+* is greater then
+* is lesser then
 * starts with
 * ends with
 * contains
@@ -109,6 +112,14 @@ Example custom code where we attach "updated" text to the end of the title for e
 - Metafields support
 
 # Change Log
+
+
+## [0.3.1] - 2020-06-08
+
+## Added
+
+- product price filtration
+- greater and lesser than options for price
 
 ## [0.3.0] - 2020-06-08
 
