@@ -1,5 +1,13 @@
 const equal = (obj, item) => obj[item[0]] === item[2];
 const notEqual = (obj, item) => obj[item[0]] !== item[2];
+const isGreater = (obj, item) => {
+  const prices = obj.variants.filter(variant => variant.price > item[2]);
+  return prices.length;
+};
+const isLess = (obj, item) => {
+  const prices = obj.variants.filter(variant => variant.price < item[2]);
+  return prices.length;
+};
 const contains = (obj, item) => obj[item[0]].indexOf(item[2]) > -1;
 const doesNotContains = (obj, item) => obj[item[0]].indexOf(item[2]) === -1;
 const startsWith = (obj, item) => {
@@ -24,6 +32,12 @@ function callFunction(obj, item){
       break;
     case 'is not equal to':
       return notEqual(obj, item)
+      break;
+    case 'is greater then':
+      return isGreater(obj, item)
+      break;
+    case 'is less then':
+      return isLess(obj, item)
       break;
     case 'starts with':
       return startsWith(obj, item);

@@ -25,7 +25,19 @@ const conditions = [
       'ends with',
       'contains',
       'does not contain'
-    ],
+    ]
+  },
+  {
+    name: 'Product Price',
+    target: "price",
+    value: "string",
+    scope: ['product', 'products'],
+    methods: [
+      'is equal to',
+      'is not equal to',
+      'is greater then',
+      'is less then'
+    ]
   }
 ]
 
