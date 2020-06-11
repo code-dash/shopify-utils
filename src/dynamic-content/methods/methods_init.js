@@ -65,8 +65,8 @@ function getObjectName(page) {
     return 'article';
   } else if (page.indexOf('page') > -1){
     return 'page';
-  } else if (page.indexOf('page') > -1){
-    return 'page';
+  } else if (page.indexOf('blog') > -1){
+    return 'blog';
   }
 }
 

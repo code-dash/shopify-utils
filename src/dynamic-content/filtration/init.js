@@ -71,7 +71,7 @@ function filterInit(){
       this.filteredItems = target.filter(obj => callFunction(obj, item));
     } else {
       const results = this.allItems.reduce((acc, val) => {
-        if(!this.filteredItems.some(obj => obj.id !== val.id)){
+        if(!this.filteredItems.some(obj => obj.id === val.id)){
           if(callFunction(val, item)){
             acc.push(val);
           }
