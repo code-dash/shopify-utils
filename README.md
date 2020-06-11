@@ -118,7 +118,7 @@ Example custom code where we attach "updated" text to the end of the title for e
 
 # Change Log
 
-## [0.3.2] - 2020-06-09
+## [0.3.2] - 2020-06-11
 
 ## Added
 
