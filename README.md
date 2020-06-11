@@ -51,6 +51,7 @@ The target objects for filtration are as follow:
 * Product title
 * Product content
 * Product price
+* Product tags
 
 The conditions are:
 
@@ -68,9 +69,13 @@ The conditions are:
 The the target elements are:
 
 * Title
+* Content
+* Tags
 
 The methods are:
 
+* Add
+* Remove
 * Lowercase
 * Uppercase
 * Insert Before
@@ -113,8 +118,19 @@ Example custom code where we attach "updated" text to the end of the title for e
 
 # Change Log
 
+## [0.3.2] - 2020-06-09
 
-## [0.3.1] - 2020-06-08
+## Added
+
+- tags filtration
+- content update methods
+- tags update methods
+
+## Update
+
+- OR filtration logic to work properly
+
+## [0.3.1] - 2020-06-09
 
 ## Added
 
