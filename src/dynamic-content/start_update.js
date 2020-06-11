@@ -7,9 +7,9 @@ export default function startUpdate(){
       const text1 = document.querySelector('.input-field').value;
       const text2 = document.querySelector('.output-field').value;
       const dynamicEle = this.sidebar.querySelector('.js-start-dynamic');
-      dynamicEle.classList.add('is-loading')
-      dynamicEle.setAttribute('disabled', 'disabled')
       if(target !== '' && type !== ''){
+        dynamicEle.classList.add('is-loading')
+        dynamicEle.setAttribute('disabled', 'disabled')
         this.methodInit(target, type, text1, text2);
       } else {
         alert("Please set all conditions")
@@ -26,7 +26,7 @@ export default function startUpdate(){
         optionRow.setAttribute('data-type', 'none');
       } else if (type === 'Custom Code'){
         optionRow.setAttribute('data-type', 'custom-code');
-      } else if (type === 'Insert before' || type === 'Insert after'){
+      } else if (type === 'Insert before' || type === 'Insert after' || type === 'Add' || type === 'Remove'){
         optionRow.setAttribute('data-type', 'insert');
       } else {
         optionRow.setAttribute('data-type', 'io-fields');

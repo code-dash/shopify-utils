@@ -2,7 +2,6 @@ const conditions = [
   {
     name: 'Product title',
     target: "title",
-    value: "string",
     scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
     methods: [
       'is equal to',
@@ -16,7 +15,6 @@ const conditions = [
   {
     name: 'Product Content',
     target: "body_html",
-    value: "string",
     scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
     methods: [
       'is equal to',
@@ -30,13 +28,21 @@ const conditions = [
   {
     name: 'Product Price',
     target: "price",
-    value: "string",
     scope: ['product', 'products'],
     methods: [
       'is equal to',
       'is not equal to',
       'is greater then',
       'is less then'
+    ]
+  },
+  {
+    name: 'Product Tags',
+    target: "tags",
+    scope: ['product', 'products'],
+    methods: [
+      'contains',
+      'does not contain'
     ]
   }
 ]
@@ -45,7 +51,6 @@ const options = [
   {
     name: "Title",
     target: "title",
-    value: "string",
     scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
     methods: [
       "Lowercase",
@@ -54,6 +59,30 @@ const options = [
       "Insert after",
       "Replace",
       "Replace RegEx",
+      "Custom Code"
+    ]
+  },
+  {
+    name: "Content",
+    target: "body_html",
+    scope: ['product', 'products', 'collection', 'collections', 'blog', 'blogs', 'article', 'articles', 'page', 'pages'],
+    methods: [
+      "Lowercase",
+      "Uppercase",
+      "Insert before",
+      "Insert after",
+      "Replace",
+      "Replace RegEx",
+      "Custom Code"
+    ]
+  },
+  {
+    name: "Tags",
+    target: "tags",
+    scope: ['product', 'products', 'article', 'articles'],
+    methods: [
+      "Add",
+      "Remove",
       "Custom Code"
     ]
   }

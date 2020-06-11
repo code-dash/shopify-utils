@@ -1,3 +1,15 @@
+const add = (type, item, text) => {
+  return {
+    id: item.id,
+    [type]: item[type].split(', ').push(text).join(', ')
+  };
+}
+const remove = (type, item, text) => {
+  return {
+    id: item.id,
+    [type]: item[type].split(', ').filter(tag => tag !== text).join(', ')
+  };
+}
 const lowercase = (type, item) => {
   return {
     id: item.id,
@@ -37,6 +49,12 @@ const replaceRegExText = (type, item, input, output) => {
 
 function callFunction(target, type, item, text = null, text2 = null){
   switch (type) {
+    case 'Add':
+      return add(target, item, text)
+      break;
+    case 'Remove':
+      return remove(target, item, text)
+      break;
     case 'Lowercase':
       return lowercase(target, item)
       break;
@@ -76,8 +94,6 @@ async function methodInit(target, type, text1, text2){
   for(let index = 0; index < this.filteredItems.length; index++){
     const item = this.filteredItems[index];
     if(type === 'Custom Code'){
-      console.log(this.customCode.getValue());
-      
       eval(this.customCode.getValue());
     } else {
       const updatedItem = {
