@@ -1,14 +1,2 @@
-@import "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/codemirror.min.css";
-@import "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/theme/dracula.min.css";
-@import "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/hint/show-hint.min.css";
-@import "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/lint/lint.min.css";
-@import "https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.54.0/addon/display/fullscreen.min.css";
-
-@import './form-elements';
-@import './sidepanel';
-@import './sidebar';
-@import './overwrites';
-@import './code-editor';
-@import './dynamic-row';
-@import './target-holder';
-@import './response-holder';
+@import 'https://cdn.jsdelivr.net/npm/@mdi/font@5.x/css/materialdesignicons.min.css';
+@import 'https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900';
