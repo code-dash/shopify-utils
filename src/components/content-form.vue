@@ -10,11 +10,38 @@
       <v-list three-line subheader>
         <v-container fluid>
           <v-subheader>Conditions</v-subheader>
-          <v-radio-group v-model="row" row>
+          <v-radio-group v-model="conditionRadio" row>
             <v-radio label="AND" value="and"></v-radio>
             <v-radio label="OR" value="or"></v-radio>
           </v-radio-group>
         </v-container>
+        <v-col class="d-flex" cols="12" v-for="(item, index) in conditionArrayElements" :key="index">
+          <v-select
+            class="pa-2"
+            v-if="conditionRadio"
+            :items="conditionTarget"
+            v-model="item.conditionTargetSelected"
+            label="Choose Type"
+            @change="() => setConditionOperators(item)"
+          ></v-select>
+          <v-select
+            v-if="item.conditionTargetSelected"
+            class="pa-2"
+            :items="item.conditionOperators"
+            v-model="item.conditionChecksSelected"
+            label="Choose Condition"
+          ></v-select>
+          <v-text-field placeholder="Enter your text here" v-if="item.conditionChecksSelected" class="pa-2" v-model="item.conditionCheckText"></v-text-field>
+          <v-btn fab x-small dark color="primary" v-if="item.conditionCheckText && index === 0" @click="addNewConditionRow">
+            <v-icon>mdi-plus-circle-outline</v-icon>
+          </v-btn>
+          <v-btn fab x-small dark color="error" v-if="index !== 0" @click="() => removeRow(index)">
+            <v-icon>mdi-minus</v-icon>
+          </v-btn>
+        </v-col>
+        <div class="text-center" v-if="checkForText">
+          <v-btn x-large color="primary">Start</v-btn>
+        </div>
       </v-list>
       <v-divider></v-divider>
     </v-card>
@@ -24,7 +51,79 @@
 <script>
 export default {
   data: () => ({
-
+    conditionRadio: '',
+    conditionArrayElements: [
+      {
+        conditionTargetSelected: '',
+        conditionChecksSelected: '',
+        conditionCheckText: '',
+        conditionOperators: []
+      }
+    ],
+    conditionTarget: [
+      {
+        text: "Title",
+        value: "title",
+        access: ['*']
+      },
+      {
+        text: "Content",
+        value: 'content',
+        access: ['*']
+      },
+      {
+        text: "Price",
+        value: 'price',
+        access: ['products', 'product']
+      },
+      {
+        text: "Tags",
+        value: 'tags',
+        access: ['products', 'product', 'article', 'articles']
+      },
+    ],
+    conditionChecks: [
+      {
+        text: "Is equal to",
+        target: ['title', 'content', 'price'],
+        value: '==='
+      },
+      {
+        text: "Is not equal to",
+        target: ['title', 'content', 'price'],
+        value: '!=='
+      },
+      {
+        text: "Starts With",
+        target: ['title', 'content', 'price'],
+        value: '^'
+      },
+      {
+        text: "Ends With",
+        target: ['title', 'content', 'price'],
+        value: '$'
+      },
+      {
+        text: "Contains",
+        target: ['*'],
+        value: 'contains'
+      },
+      {
+        text: "Does not Contains",
+        target: ['*'],
+        value: '!contains'
+      },
+      {
+        text: "Is Greater Then",
+        target: ['price'],
+        value: '>'
+      },
+      {
+        text: "Is Less Then",
+        target: ['price'],
+        value: '<'
+      },
+    ]
   }),
   props: {
     dialog: {
@@ -32,9 +131,28 @@ export default {
       default: false
     }
   },
+  computed: {
+    checkForText() {
+      return this.conditionArrayElements.filter(item => item.conditionCheckText != '').length > 0;
+    }
+  },
   methods: {
     closeModal() {
       this.$emit('contentClose');
+    },
+    setConditionOperators(ele) {
+      const conditionSelected = this.conditionTarget.filter(item => item.value === ele.conditionTargetSelected).pop() || [];
+      ele.conditionOperators = this.conditionChecks.filter(item => item.target.indexOf(conditionSelected.value) > -1 || item.target.indexOf('*') > -1);
+    },
+    addNewConditionRow(){
+      this.conditionArrayElements.push({
+        conditionTargetSelected: '',
+        conditionChecksSelected: '',
+        conditionCheckText: '',
+      })
+    },
+    removeRow(ind){
+      this.conditionArrayElements = this.conditionArrayElements.filter((_,itemIndex) => itemIndex !== ind);
     }
   }
 }
