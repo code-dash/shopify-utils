@@ -34,6 +34,7 @@
 </template>
 
 <script>
+  import { mapActions } from 'vuex';
   import DuplicateForm from './components/duplicate-form';
   import ContenForm from './components/content-form';
 
@@ -55,6 +56,7 @@
         this.duplicateModal = false;
         this.contentModal = false;
         this.drawer = true;
+        this.getPageType();
       },
       openDuplicateModal: function(){
         this.duplicateModal = true;
@@ -69,7 +71,11 @@
       },
       contentClose: function(){
         this.contentModal = false;
-      }
+      },
+      ...mapActions(['setToken', 'getPageType'])
+    },
+    created: function() {
+      this.setToken();
     }
   }
 </script>

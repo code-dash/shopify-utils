@@ -1,14 +1,26 @@
+import setCSRFtokenFunction from '../../lib/setCSRFtoken';
+
 const state = {
-  csrfToken: 'test'
+  csrfToken: ''
 };
 
 const getters = {
   csrfToken: state => state.csrfToken
 };
 
-const actions = {};
+const actions = {
+  setToken({commit}) {
+    setCSRFtokenFunction().then(res => {
+      commit('setCSRFToken', res)
+    }).catch(e => {
+      console.log(e);
+    })
+  }
+};
 
-const mutations = {};
+const mutations = {
+  setCSRFToken: (state, csrfToken) => (state.csrfToken = csrfToken)
+};
 
 export default {
   state,

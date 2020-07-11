@@ -19,7 +19,7 @@
           <v-select
             class="pa-2"
             v-if="conditionRadio"
-            :items="conditionTarget"
+            :items="conditionTargetFilter"
             v-model="item.conditionTargetSelected"
             label="Choose Type"
             @change="() => setConditionOperators(item)"
@@ -33,14 +33,14 @@
           ></v-select>
           <v-text-field placeholder="Enter your text here" v-if="item.conditionChecksSelected" class="pa-2" v-model="item.conditionCheckText"></v-text-field>
           <v-btn fab x-small dark color="primary" v-if="item.conditionCheckText && index === 0" @click="addNewConditionRow">
-            <v-icon>mdi-plus-circle-outline</v-icon>
+            <v-icon>mdi-plus</v-icon>
           </v-btn>
           <v-btn fab x-small dark color="error" v-if="index !== 0" @click="() => removeRow(index)">
             <v-icon>mdi-minus</v-icon>
           </v-btn>
         </v-col>
         <div class="text-center" v-if="checkForText">
-          <v-btn x-large color="primary">Start</v-btn>
+          <v-btn x-large color="primary" @click="startGettingItems">Start</v-btn>
         </div>
       </v-list>
       <v-divider></v-divider>
@@ -49,6 +49,8 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex';
+
 export default {
   data: () => ({
     conditionRadio: '',
@@ -134,6 +136,10 @@ export default {
   computed: {
     checkForText() {
       return this.conditionArrayElements.filter(item => item.conditionCheckText != '').length > 0;
+    },
+    ...mapGetters(['pageType', 'csrfToken']),
+    conditionTargetFilter(){
+      return this.conditionTarget.filter(item => item.access.indexOf(this.pageType[0]) > -1 || item.access.indexOf('*') > -1)
     }
   },
   methods: {
@@ -153,7 +159,14 @@ export default {
     },
     removeRow(ind){
       this.conditionArrayElements = this.conditionArrayElements.filter((_,itemIndex) => itemIndex !== ind);
-    }
+    },
+    startGettingItems(){
+      this.getItems(`${this.pageType[1]}.json?view=250`, this.csrfToken, this.pageType[1]);
+    },
+    ...mapActions(['getPageType', 'getItems'])
+  },
+  mounted() {
+    this.getPageType();
   }
 }
 </script>
