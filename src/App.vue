@@ -27,7 +27,7 @@
     </v-navigation-drawer>
     <ContenForm :dialog="contentModal" @contentClose="contentClose"/>
     <DuplicateForm :dialog="duplicateModal" @duplicateClose="duplicateClose"/>
-    <span @click.stop="openNavigation">
+    <span @click.stop="openNavigation" class="toggle-main-nav">
       <v-icon>mdi-arrow-left-bold-box</v-icon>
     </span>
   </v-app>

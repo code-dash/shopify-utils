@@ -1,13 +1,15 @@
 import Vue from 'vue'
 import App from './App.vue'
 import vuetify from './plugins/vuetify';
-import 'vuetify/dist/vuetify.min.css';
 import './styles/main.scss';
 import store from './store';
 
+var appEleWrapper = document.createElement('div');
 var appEle = document.createElement('div');
+appEleWrapper.setAttribute('id', 'shopify-utils-wrapper');
 appEle.setAttribute('id', 'shopify-utils');
-document.body.prepend(appEle);
+appEleWrapper.appendChild(appEle)
+document.body.prepend(appEleWrapper);
 
 Vue.config.productionTip = false
 
