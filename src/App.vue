@@ -36,7 +36,6 @@
 <script>
   import DuplicateForm from './components/duplicate-form';
   import ContenForm from './components/content-form';
-  import setCSRFToken from './lib/setCSRFtoken';
 
   export default {
     props: {
@@ -70,13 +69,7 @@
       },
       contentClose: function(){
         this.contentModal = false;
-      },
-      tokenSet() {
-        setCSRFToken();
       }
-    },
-    created() {
-      this.tokenSet()
     }
   }
 </script>
