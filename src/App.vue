@@ -7,20 +7,20 @@
       app
     >
       <v-list dense>
-        <v-list-item link>
+        <v-list-item link @click.stop="openDuplicateModal">
           <v-list-item-action>
             <v-icon>mdi-content-copy</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click.stop="openDuplicateModal">Duplicate Selected</v-list-item-title>
+            <v-list-item-title>Duplicate Selected</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item link @click.stop="openContentModal">
           <v-list-item-action>
             <v-icon>mdi-content-duplicate</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title @click.stop="openContentModal">Dynamic Content</v-list-item-title>
+            <v-list-item-title>Dynamic Content</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

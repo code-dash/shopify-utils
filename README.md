@@ -12,7 +12,15 @@ There might be some bugs so please use at your own discretion!
 
 ## How to use
 
-1) Copy the code from `dist/bundle.js`.
+1) Copy the following code:
+
+```
+fetch('https://raw.githubusercontent.com/code-dash/shopify-utils/recode/dist/bundle.js').then(res => res.text()).then(res => {
+  var script = document.createElement('script');
+  script.innerHTML = res;
+  document.head.appendChild(script);
+})
+```
 
 2) Open your Shopify admin
 
