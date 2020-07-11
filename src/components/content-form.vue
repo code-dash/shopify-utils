@@ -7,7 +7,7 @@
         </v-btn>
         <v-toolbar-title>Dynamic Content</v-toolbar-title>
       </v-toolbar>
-      <v-list three-line subheader>
+      <v-list subheader>
         <v-container fluid>
           <v-subheader>Conditions</v-subheader>
           <v-radio-group v-model="conditionRadio" row>
@@ -42,6 +42,16 @@
         <div class="text-center" v-if="checkForText">
           <v-btn x-large color="primary" @click="startGettingItems">Start</v-btn>
         </div>
+        <v-list dense>
+          <v-list-item v-for="(item, index) in getFilteredItems[pageType[1]]" :key="item.id" dense>
+            <v-list-item-content>
+              <strong>{{index}}</strong>
+            </v-list-item-content>
+            <v-list-item-content>
+              <a :href="'/admin/' + pageType[1]+ '/' + item.id" target="_blank">{{item.title}}</a>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
       </v-list>
       <v-divider></v-divider>
     </v-card>
@@ -137,10 +147,10 @@ export default {
     checkForText() {
       return this.conditionArrayElements.filter(item => item.conditionCheckText != '').length > 0;
     },
-    ...mapGetters(['pageType', 'csrfToken']),
     conditionTargetFilter(){
       return this.conditionTarget.filter(item => item.access.indexOf(this.pageType[0]) > -1 || item.access.indexOf('*') > -1)
-    }
+    },
+    ...mapGetters(['pageType', 'csrfToken', 'getFilteredItems']),
   },
   methods: {
     closeModal() {
@@ -161,7 +171,15 @@ export default {
       this.conditionArrayElements = this.conditionArrayElements.filter((_,itemIndex) => itemIndex !== ind);
     },
     startGettingItems(){
-      this.getItems(`${this.pageType[1]}.json?view=250`, this.csrfToken, this.pageType[1]);
+      if(this.pageType[1] !== 'blogs' && this.pageType[1] !== 'articles') {
+        this.getItems({
+          url: `${this.pageType[1]}.json?view=250`,
+          csrfToken: this.csrfToken, 
+          pageType: this.pageType[1],
+          conditionArrayElements: this.conditionArrayElements,
+          conditionRadio: this.conditionRadio
+        });
+      }
     },
     ...mapActions(['getPageType', 'getItems'])
   },

@@ -1,4 +1,4 @@
-  function getRequestAll(url, items, csrfToken){
+function getRequestAll(url, items, csrfToken){
   return new Promise((resolve) => {
     fetch(`/admin/api/2020-10/${url}`, {
       method: "GET",
