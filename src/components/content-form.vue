@@ -42,16 +42,7 @@
         <div class="text-center" v-if="checkForText">
           <v-btn x-large color="primary" @click="startGettingItems">Start</v-btn>
         </div>
-        <v-list dense>
-          <v-list-item v-for="(item, index) in getFilteredItems[pageType[1]]" :key="item.id" dense>
-            <v-list-item-content>
-              <strong>{{index}}</strong>
-            </v-list-item-content>
-            <v-list-item-content>
-              <a :href="'/admin/' + pageType[1]+ '/' + item.id" target="_blank">{{item.title}}</a>
-            </v-list-item-content>
-          </v-list-item>
-        </v-list>
+        <ResponseList :page-type="pageType" />
       </v-list>
       <v-divider></v-divider>
     </v-card>
@@ -60,6 +51,7 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import ResponseList from './response-list';
 
 export default {
   data: () => ({
@@ -150,7 +142,7 @@ export default {
     conditionTargetFilter(){
       return this.conditionTarget.filter(item => item.access.indexOf(this.pageType[0]) > -1 || item.access.indexOf('*') > -1)
     },
-    ...mapGetters(['pageType', 'csrfToken', 'getFilteredItems']),
+    ...mapGetters(['pageType', 'csrfToken']),
   },
   methods: {
     closeModal() {
@@ -182,6 +174,9 @@ export default {
       }
     },
     ...mapActions(['getPageType', 'getItems'])
+  },
+  components: {
+    ResponseList
   },
   mounted() {
     this.getPageType();
