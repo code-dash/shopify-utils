@@ -1,11 +1,11 @@
-const equal = (obj, item) => obj[item.conditionTargetSelected] === item.conditionCheckText;
-const notEqual = (obj, item) => obj[item.conditionTargetSelected] !== item.conditionCheckText;
+const equal = (obj, item) => obj[item.conditionTargetSelected] === item.conditionCheckText.toString();
+const notEqual = (obj, item) => obj[item.conditionTargetSelected] !== item.conditionCheckText.toString();
 const isGreater = (obj, item) => {
-  const prices = obj.variants.filter(variant => variant.price > item.conditionCheckText);
+  const prices = obj.variants.filter(variant => parseInt(variant.price.replace('.', ''))/100 > item.conditionCheckText);
   return prices.length;
 };
 const isLess = (obj, item) => {
-  const prices = obj.variants.filter(variant => variant.price < item.conditionCheckText);
+  const prices = obj.variants.filter(variant => parseInt(variant.price.replace('.', ''))/100 < item.conditionCheckText);
   return prices.length;
 };
 const contains = (obj, item) => obj[item.conditionTargetSelected].indexOf(item.conditionCheckText) > -1;

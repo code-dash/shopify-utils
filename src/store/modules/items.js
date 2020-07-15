@@ -28,10 +28,10 @@ const actions = {
 }
 
 const getters = {
-  getItem(state){
+  getItem(state) {
     return state.items;
   },
-  getFilteredItems(state) {
+  getFilteredItems (state) {
     return state.filteredItems;
   }
 }

@@ -43,6 +43,7 @@
           <v-btn x-large color="primary" @click="startGettingItems">Start</v-btn>
         </div>
         <ResponseList :page-type="pageType" />
+        <ReplaceForm :page-type="pageType" />
       </v-list>
       <v-divider></v-divider>
     </v-card>
@@ -50,10 +51,15 @@
 </template>
 
 <script>
-import { mapActions, mapGetters } from 'vuex';
-import ResponseList from './response-list';
+import { mapActions, mapGetters } from 'vuex'
+import ResponseList from './response-list'
+import ReplaceForm from './replace-form'
 
 export default {
+  components: {
+    ResponseList,
+    ReplaceForm
+  },
   data: () => ({
     conditionRadio: '',
     conditionArrayElements: [
@@ -72,7 +78,7 @@ export default {
       },
       {
         text: "Content",
-        value: 'content',
+        value: 'body_html',
         access: ['*']
       },
       {
@@ -89,22 +95,22 @@ export default {
     conditionChecks: [
       {
         text: "Is equal to",
-        target: ['title', 'content', 'price'],
+        target: ['title', 'body_html', 'price'],
         value: '==='
       },
       {
         text: "Is not equal to",
-        target: ['title', 'content', 'price'],
+        target: ['title', 'body_html', 'price'],
         value: '!=='
       },
       {
         text: "Starts With",
-        target: ['title', 'content', 'price'],
+        target: ['title', 'body_html'],
         value: '^'
       },
       {
         text: "Ends With",
-        target: ['title', 'content', 'price'],
+        target: ['title', 'body_html'],
         value: '$'
       },
       {
@@ -174,9 +180,6 @@ export default {
       }
     },
     ...mapActions(['getPageType', 'getItems'])
-  },
-  components: {
-    ResponseList
   },
   mounted() {
     this.getPageType();
